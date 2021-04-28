@@ -1,0 +1,6 @@
+[
+  {
+    "name": "bot-telegram-api",
+    "imageUri": "arn:aws:ecs:us-east-2:901698608209:cluster/four-cluster"
+  }
+]
