@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  redis:
+    container_name: redis
+    image: redis:4
+    command: redis-server --requirepass admin
+    volumes:
+      - ../../volumes/radis/data:/data
+    ports:
+      - 6379:6379
+    networks:
+      - chatbot-network
+networks:
+  chatbot-network:
+    driver: bridge
