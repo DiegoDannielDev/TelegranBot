@@ -1,0 +1,15 @@
+br/com/fourbot/controllers/NotificacaoController.class
+br/com/fourbot/comandos/ComandoTelegram.class
+br/com/fourbot/services/NotificacaoService.class
+br/com/fourbot/configurations/RedisConfig.class
+br/com/fourbot/comandos/ComandoAssinar.class
+br/com/fourbot/controllers/jsons/NotificacaoJson.class
+br/com/fourbot/schedules/ConsumerMessagesTelegram.class
+br/com/fourbot/services/TelegramService.class
+br/com/fourbot/configurations/TelegramConfiguration.class
+br/com/fourbot/BotNotificacaoApiApplication.class
+br/com/fourbot/repositories/ChatRepository.class
+br/com/fourbot/configurations/SwaggerConfig.class
+br/com/fourbot/comandos/ComandoDesinscrever.class
+br/com/fourbot/entities/Chat.class
+br/com/fourbot/services/ComandosService.class
