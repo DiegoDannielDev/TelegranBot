@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  build:
+    commands:
+      - java -version
+      - mvn -version
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION > VERSION
+      - . $CODEBUILD_SRC_DIR_Libs/maven/configure-settings.sh
+      - mvn -T 2C install -s $CODEBUILD_SRC_DIR/app/settings.xml -f $CODEBUILD_SRC_DIR/app/pom.xml -X
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8 > TAG
+artifacts:
+  files:
+    - app/target/*
+    - VERSION
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
