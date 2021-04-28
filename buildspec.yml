@@ -4,16 +4,25 @@ phases:
   install:
     runtime-versions:
       java: openjdk11
+      docker: 18
   build:
     commands:
       - echo Build started on `date`
       - mvn test
+      - apt-get install jq -y
+      - ContainerName="todo"
+      - ImageURI=$(cat imageDetail.json | jq -r '.ImageURI')
+      - printf '[{"name":"CONTAINER_NAME","imageUri":"IMAGE_URI"}]' > imagedefinitions.json
+      - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
+      - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
+      - cat imagedefinitions.json
   post_build:
     commands:
       - echo Build completed on `date`
       - mvn package
 artifacts:
   files:
+    - imagedefinitions.json
     - target/bot-notificacao-api-VERSION-REVISION.jar
     - appspec.yml
   discard-paths: yes
