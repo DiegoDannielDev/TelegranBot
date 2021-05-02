@@ -18,14 +18,18 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/api/notificacao")
 public class NotificacaoController {
 
-	@Autowired
+
 	private NotificacaoService notificacaoService; 
 	
+	public NotificacaoController(NotificacaoService service){
+		this.notificacaoService = service;
+	}
+
 	@ApiOperation(value = "Envia uma mensagem para o telegram")
 	@PostMapping
-	public ResponseEntity postarMensagem(@RequestBody  NotificacaoJson json) {
+	public ResponseEntity<?> postarMensagem(@RequestBody  NotificacaoJson json) {
 		notificacaoService.notificar(json); 
-		return new ResponseEntity(HttpStatus.CREATED); 
+		return new ResponseEntity<>(HttpStatus.CREATED); 
 		
 	}
 }

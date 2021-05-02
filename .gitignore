@@ -1,0 +1,7 @@
+.gradle
+.mvn
+.idea
+.iml
+build
+devops/volumes/*
+out
